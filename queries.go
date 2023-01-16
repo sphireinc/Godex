@@ -1,7 +1,7 @@
 package Godex
 
-// Queries stores specific queries to be used by Codex
-type Queries struct {
+// DefaultQueries stores specific queries to be used by Codex
+type DefaultQueries struct {
 	SelectById string `json:"selectById,omitempty"`
 	SelectOne  string `json:"selectOne,omitempty"`
 	Select     string `json:"select,omitempty"`
@@ -18,36 +18,37 @@ func (c *Codex) RawQuery(query string, args ...any) (any, error) {
 
 // SelectById one item
 func (c *Codex) SelectById(args ...any) (any, error) {
-	return c.DB.SelectOne(c, c.Queries.SelectById, args...)
+	return c.DB.SelectOne(c.result, c.DefaultQueries.SelectById, args...)
 }
 
 // SelectOne item
 func (c *Codex) SelectOne(args ...any) (any, error) {
-	return c.DB.SelectOne(c, c.Queries.SelectOne, args...)
+	return c.DB.SelectOne(c, c.DefaultQueries.SelectOne, args...)
 }
 
 // Select one
-func (c *Codex) Select(into []any, args ...any) (any, []any, error) {
-	record, err := c.DB.Select(&into, c.Queries.Select, args...)
-	return record, into, err
+func (c *Codex) Select(args ...any) ([]any, error) {
+	var res []any
+	_, err := c.DB.Select(res, c.DefaultQueries.Select, args...)
+	return res, err
 }
 
 // Insert a new record
 func (c *Codex) Insert() (int64, error) {
-	return c.DB.InsertOne(c.Queries.Insert, c)
+	return c.DB.InsertOne(c.DefaultQueries.Insert, c)
 }
 
 // Update a specific record
 func (c *Codex) Update() (int64, error) {
-	return c.DB.UpdateOne(c.Queries.Update, c)
+	return c.DB.UpdateOne(c.DefaultQueries.Update, c)
 }
 
 // Delete a specific record
 func (c *Codex) Delete() error {
-	return c.DB.DeleteOne(c.Queries.Delete, c)
+	return c.DB.DeleteOne(c.DefaultQueries.Delete, c)
 }
 
 // SoftDelete a specific record
 func (c *Codex) SoftDelete() (int64, error) {
-	return c.DB.UpdateOne(c.Queries.SoftDelete, c)
+	return c.DB.UpdateOne(c.DefaultQueries.SoftDelete, c)
 }

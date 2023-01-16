@@ -18,7 +18,7 @@ func CreateGodex(
 ) Codex {
 	return Codex{
 		Table: table,
-		Queries: Queries{
+		DefaultQueries: DefaultQueries{
 			SelectById: SelectById,
 			SelectOne:  SelectOne,
 			Select:     Select,
@@ -27,6 +27,7 @@ func CreateGodex(
 			Delete:     Delete,
 			SoftDelete: SoftDelete,
 		},
-		DB: db,
+		Queries: map[string]string{},
+		DB:      db,
 	}
 }

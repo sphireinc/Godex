@@ -7,7 +7,7 @@ Godex creates a simple interface for creating and story instances of reusable qu
 ```go
 q := Codex{
     Table: "posts",
-    Queries: Queries{
+	DefaultQueries: DefaultQueries{
         SelectById: "SELECT * FROM posts WHERE id = :id",
         SelectOne:  "SELECT * FROM posts WHERE id = :id and post_title = :post_title",
         Select:     "SELECT * FROM posts WHERE created_at > '2020-05-10 12:23:43'",
@@ -16,11 +16,21 @@ q := Codex{
         Delete:     "DELETE FROM posts WHERE id=:id",
         SoftDelete: "UPDATE posts SET deleted_at=CURRENT_TIMESTAMP() WHERE id=:id",
     },
+    Queries: map[string]string{
+        "SelectUsers": "",
+    },
 }
 
-res, err := q.SelectOne()
+// Default Queries
+res, err := q.SelectOne(CxArgs{"id": 154, "post_title": "Hello World"})
 if err != nil {
 	panic(err)
 }
 fmt.Println(res.postId)
+
+// Custom Queries
+_, err := q.RawQuery(q.Queries["SelectUsers"])
+if err != nil {
+    return
+}
 ```
