@@ -8,7 +8,7 @@ Godex provides a simple utility for creating and storing reusable queries
 ```go
 q := Codex{
     Table: "posts",
-	DefaultQueries: DefaultQueries{
+    DefaultQueries: DefaultQueries{
         SelectById: "SELECT * FROM posts WHERE id = :id",
         SelectOne:  "SELECT * FROM posts WHERE id = :id and post_title = :post_title",
         Select:     "SELECT * FROM posts WHERE created_at > '2020-05-10 12:23:43'",
