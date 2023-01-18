@@ -18,7 +18,7 @@ q := Codex{
         SoftDelete: "UPDATE posts SET deleted_at=CURRENT_TIMESTAMP() WHERE id=:id",
     },
     Queries: map[string]string{
-        "SelectUsers": "",
+        "SelectUsersByFirstName": "SELECT * FROM users WHERE first_name = :first_name",
     },
 }
 ```
@@ -36,7 +36,7 @@ fmt.Println(res.postId)
 ##### Custom Queries
 
 ```go
-_, err := q.RawQuery(q.Queries["SelectUsers"])
+_, err := q.RawQuery(q.Queries["SelectUsersByFirstName"], "John")
 if err != nil {
     return
 }
