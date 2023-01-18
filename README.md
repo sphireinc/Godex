@@ -1,6 +1,6 @@
 # Godex
 
-Godex creates a simple interface for creating and story instances of reusable queries
+Godex provides a simple utility for creating and storing reusable queries
 
 ### Example 
 
