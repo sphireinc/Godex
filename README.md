@@ -41,3 +41,10 @@ if err != nil {
     return
 }
 ```
+
+
+### Roadmap
+
+1. Integrate Migrations into Godex (a feature which exists within Sphire's Codex utility)
+2. Unit tests
+3. Github Actions
