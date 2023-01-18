@@ -4,6 +4,7 @@ Godex provides a simple utility for creating and storing reusable queries
 
 ### Example 
 
+##### Creating a Codex
 ```go
 q := Codex{
     Table: "posts",
@@ -20,15 +21,21 @@ q := Codex{
         "SelectUsers": "",
     },
 }
+```
 
-// Default Queries
+##### Default Queries
+
+```go
 res, err := q.SelectOne(CxArgs{"id": 154, "post_title": "Hello World"})
 if err != nil {
 	panic(err)
 }
 fmt.Println(res.postId)
+```
 
-// Custom Queries
+##### Custom Queries
+
+```go
 _, err := q.RawQuery(q.Queries["SelectUsers"])
 if err != nil {
     return
