@@ -36,7 +36,7 @@ fmt.Println(res.postId)
 ##### Custom Queries
 
 ```go
-_, err := q.RawQuery(q.Queries["SelectUsersByFirstName"], "John")
+_, err := q.RawQuery(q.Queries["SelectUsersByFirstName"], CxArgs{"first_name": "John"})
 if err != nil {
     return
 }
