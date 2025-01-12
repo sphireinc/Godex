@@ -2,6 +2,10 @@
 
 Godex provides a simple utility for creating and storing reusable queries
 
+<div align="center">
+    <img src="godex_logo.png" width="400px"  alt="logo" />
+</div>
+
 ### Example 
 
 ##### Creating a Codex
