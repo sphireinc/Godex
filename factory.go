@@ -1,12 +1,14 @@
-package Godex
+package godex
 
 import (
-	mantisDb "github.com/sphireinc/mantis/database"
+	"github.com/jmoiron/sqlx"
 )
 
-// CreateGodex creates a new instance of Codex
+// CreateGodex creates a new instance of Codex.
+//
+// Deprecated: use New or NewWithQueries instead.
 func CreateGodex(
-	db mantisDb.MySQL,
+	db *sqlx.DB,
 	table string,
 	SelectById string,
 	SelectOne string,
@@ -16,18 +18,13 @@ func CreateGodex(
 	Delete string,
 	SoftDelete string,
 ) Codex {
-	return Codex{
-		Table: table,
-		DefaultQueries: DefaultQueries{
-			SelectById: SelectById,
-			SelectOne:  SelectOne,
-			Select:     Select,
-			Insert:     Insert,
-			Update:     Update,
-			Delete:     Delete,
-			SoftDelete: SoftDelete,
-		},
-		Queries: map[string]string{},
-		DB:      db,
-	}
+	return *New(db, table, DefaultQueries{
+		SelectById: SelectById,
+		SelectOne:  SelectOne,
+		Select:     Select,
+		Insert:     Insert,
+		Update:     Update,
+		Delete:     Delete,
+		SoftDelete: SoftDelete,
+	})
 }
