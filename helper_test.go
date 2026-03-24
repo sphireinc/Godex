@@ -1,7 +1,6 @@
 package godex
 
 import (
-	"context"
 	"errors"
 	"reflect"
 	"strings"
@@ -204,7 +203,7 @@ func TestExecNamedNilPayload(t *testing.T) {
 
 	sqlxDB := sqlx.NewDb(db, "sqlmock")
 	codex := New(sqlxDB, "posts", DefaultQueries{})
-	_, err = codex.execNamed(context.Background(), "INSERT INTO posts(title) VALUES (:title)", nil)
+	_, err = codex.execNamed(t.Context(), "INSERT INTO posts(title) VALUES (:title)", nil)
 	if err == nil || !strings.Contains(err.Error(), "named exec requires a payload") {
 		t.Fatalf("expected nil payload error, got %v", err)
 	}

@@ -1,6 +1,6 @@
 # Godex
 
-[![Go](https://img.shields.io/badge/go-1.22+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
+[![Go](https://img.shields.io/badge/go-1.24+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
 [![CI](https://github.com/sphireinc/Godex/actions/workflows/go.yml/badge.svg)](https://github.com/sphireinc/Godex/actions/workflows/go.yml)
 [![Go Reference](https://pkg.go.dev/badge/github.com/sphireinc/godex/v2.svg)](https://pkg.go.dev/github.com/sphireinc/godex/v2)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
