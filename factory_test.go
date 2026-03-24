@@ -1,15 +1,12 @@
-package Godex
+package godex
 
 import (
-	mantisDb "github.com/sphireinc/mantis/database"
-	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func TestCreateGodex(t *testing.T) {
-	db := mantisDb.MySQL{}
 	q := CreateGodex(
-		db,
+		nil,
 		"someTable",
 		"SelectById",
 		"SelectOne",
@@ -19,6 +16,10 @@ func TestCreateGodex(t *testing.T) {
 		"Delete",
 		"SoftDelete",
 	)
-	assert.Equal(t, "someTable", q.Table)
-	assert.Equal(t, "Insert", q.DefaultQueries.Insert)
+	if q.Table != "someTable" {
+		t.Fatalf("expected table someTable, got %s", q.Table)
+	}
+	if q.DefaultQueries.Insert != "Insert" {
+		t.Fatalf("expected insert query Insert, got %s", q.DefaultQueries.Insert)
+	}
 }

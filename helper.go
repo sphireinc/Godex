@@ -1,4 +1,4 @@
-package Godex
+package godex
 
 import (
 	"bytes"
