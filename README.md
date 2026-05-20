@@ -11,7 +11,7 @@ Godex is a small `sqlx`-based query store for reusable table-level queries.
 - [Migration Guide](MIGRATING.md)
 
 <div align="center">
-    <img src="logo_checkerboard.png" style="filter: grayscale(1) contrast(1.08);" width="400px" alt="logo" />
+    <img src="logo_grayscale.png" width="400px" alt="logo" />
 </div>
 
 ## Example
